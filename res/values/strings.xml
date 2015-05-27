@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">扫码</string>
+    <string name="scan_text">将二维码/条形码放置框内，即开始扫描</string>
+</resources>

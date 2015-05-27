@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/AutoFocusCallback.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/CameraConfigurationManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/CameraManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/FlashlightManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/PlanarYUVLuminanceSource.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/camera/PreviewCallback.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/CaptureActivityHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/DecodeFormatManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/DecodeHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/DecodeThread.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/FinishListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/InactivityTimer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/decoding/Intents.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/view/ViewfinderResultPointCallback.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/zxing/view/ViewfinderView.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
