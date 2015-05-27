@@ -21,12 +21,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import com.example.qr_codescan.MipcaActivityCapture;
-import com.example.qr_codescan.R;
+import com.example.qrcodescan.MainActivity;
+import com.example.qrcodescan.R;
 import com.google.zxing.*;
 import com.google.zxing.common.HybridBinarizer;
-import com.mining.app.zxing.camera.CameraManager;
-import com.mining.app.zxing.camera.PlanarYUVLuminanceSource;
+import com.zxing.camera.CameraManager;
+import com.zxing.camera.PlanarYUVLuminanceSource;
 
 import java.util.Hashtable;
 
@@ -34,10 +34,10 @@ final class DecodeHandler extends Handler {
 
   private static final String TAG = DecodeHandler.class.getSimpleName();
 
-  private final MipcaActivityCapture activity;
+  private final MainActivity activity;
   private final MultiFormatReader multiFormatReader;
 
-  DecodeHandler(MipcaActivityCapture activity, Hashtable<DecodeHintType, Object> hints) {
+  DecodeHandler(MainActivity activity, Hashtable<DecodeHintType, Object> hints) {
     multiFormatReader = new MultiFormatReader();
     multiFormatReader.setHints(hints);
     this.activity = activity;

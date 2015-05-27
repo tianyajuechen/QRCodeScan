@@ -24,12 +24,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import com.example.qr_codescan.MipcaActivityCapture;
-import com.example.qr_codescan.R;
+import com.example.qrcodescan.MainActivity;
+import com.example.qrcodescan.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mining.app.zxing.camera.CameraManager;
-import com.mining.app.zxing.view.ViewfinderResultPointCallback;
+import com.zxing.camera.CameraManager;
+import com.zxing.view.ViewfinderResultPointCallback;
 
 import java.util.Vector;
 
@@ -40,7 +40,7 @@ public final class CaptureActivityHandler extends Handler {
 
   private static final String TAG = CaptureActivityHandler.class.getSimpleName();
 
-  private final MipcaActivityCapture activity;
+  private final MainActivity activity;
   private final DecodeThread decodeThread;
   private State state;
 
@@ -50,7 +50,7 @@ public final class CaptureActivityHandler extends Handler {
     DONE
   }
 
-  public CaptureActivityHandler(MipcaActivityCapture activity, Vector<BarcodeFormat> decodeFormats,
+  public CaptureActivityHandler(MainActivity activity, Vector<BarcodeFormat> decodeFormats,
       String characterSet) {
     this.activity = activity;
     decodeThread = new DecodeThread(activity, decodeFormats, characterSet,
