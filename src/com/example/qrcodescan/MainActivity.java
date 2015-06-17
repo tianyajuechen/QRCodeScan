@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,7 +13,9 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -23,10 +27,12 @@ import com.zxing.view.ViewfinderView;
 import java.io.IOException;
 import java.util.Vector;
 
-public class MainActivity extends Activity implements SurfaceHolder.Callback {
+public class MainActivity extends Activity implements SurfaceHolder.Callback, View.OnClickListener {
 
     private CaptureActivityHandler handler;
     private ViewfinderView viewfinderView;
+    private ImageView iv_flashlight;
+    private ImageView iv_back;
     private boolean hasSurface;
     private Vector<BarcodeFormat> decodeFormats;
     private String characterSet;
@@ -42,11 +48,33 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
 
-        CameraManager.init(getApplication());
+        CameraManager.init(this);
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-
+        iv_flashlight = (ImageView) findViewById(R.id.iv_flashlight);
+        iv_flashlight.setOnClickListener(this);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(this);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_flashlight:
+                if (CameraManager.get().parameters.getFlashMode().equals(Camera.Parameters.FLASH_MODE_TORCH)) {
+                    CameraManager.get().setFlashlight(false);
+                    iv_flashlight.setImageResource(R.drawable.flashlight_off);
+                } else {
+                    CameraManager.get().setFlashlight(true);
+                    iv_flashlight.setImageResource(R.drawable.flashlight_on);
+                }
+                break;
+
+            case R.id.iv_back:
+                finish();
+                break;
+        }
     }
 
     @Override
@@ -103,7 +131,13 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
             Intent resultIntent = new Intent(MainActivity.this, CodeInfoActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("result", resultString);
-            bundle.putParcelable("bitmap", barcode);
+            /**
+             * 图片过大的时候无法传递，压缩一下
+             */
+            Matrix matrix = new Matrix();
+            matrix.postScale(0.5f, 0.5f);
+            Bitmap bitmap = Bitmap.createBitmap(barcode, 0, 0, barcode.getWidth(), barcode.getHeight(), matrix, true);
+            bundle.putParcelable("bitmap", bitmap);
             resultIntent.putExtras(bundle);
             startActivity(resultIntent);
         }

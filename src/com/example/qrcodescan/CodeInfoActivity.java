@@ -31,6 +31,5 @@ public class CodeInfoActivity extends Activity{
         iv = (ImageView) findViewById(R.id.iv_iamge);
         et_info.setText(code_info);
         iv.setImageBitmap(bitmap);
-
     }
 }

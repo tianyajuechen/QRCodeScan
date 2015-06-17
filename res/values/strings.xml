@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">扫码</string>
     <string name="scan_text">将二维码/条形码放置框内，即开始扫描</string>
+    <string name="open_camera_error">开启摄像头失败，请检查是否有其他程序占用摄像头或闪光灯</string>
+    <string name="hint">提示</string>
+    <string name="confirm">确认</string>
 </resources>
